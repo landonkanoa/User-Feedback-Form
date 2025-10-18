@@ -8,46 +8,46 @@ const emailCharacters = document.getElementById("emailCount");
 const commentCharacters = document.getElementById("commentCount");
 const feedbackDisplay = document.getElementById("feedbackDisplay");
 
-// Added event listeners with 'input' to actively change character count on website. No longer in use because of bubbling and delegation.
-/* username.addEventListener('input', () => {
+// Added event listeners with "input" to actively change character count on website. No longer in use because of bubbling and delegation.
+/* username.addEventListener("input", () => {
     userCharacters.textContent = username.value.length
 });
 
-email.addEventListener('input', () => {
+email.addEventListener("input", () => {
     emailCharacters.textContent = email.value.length
 });
 
-comments.addEventListener('input', () => {
+comments.addEventListener("input", () => {
     commentCharacters.textContent = comments.value.length
 }); */
 
 // Added Tooltips when user hovers textbox
-username.addEventListener('mouseover', () => {
+username.addEventListener("mouseover", () => {
     username.title = "Please input your username."
 });
 
-username.addEventListener('mouseout', () => {
+username.addEventListener("mouseout", () => {
     username.title = ""
 });
 
-email.addEventListener('mouseover', () => {
+email.addEventListener("mouseover", () => {
     email.title = "Please input your Email."
 });
 
-email.addEventListener('mouseout', () => {
+email.addEventListener("mouseout", () => {
     email.title = ""
 });
 
-comments.addEventListener('mouseover', () => {
+comments.addEventListener("mouseover", () => {
     comments.title = "Please input any comments or concerns."
 });
 
-comments.addEventListener('mouseout', () => {
+comments.addEventListener("mouseout", () => {
     comments.title = ""
 });
 
 // Added it so users could not submit without all fields and text value was appended onto the page.
-submitButton.addEventListener('click', (e) => {
+submitButton.addEventListener("click", (e) => {
     e.preventDefault();
     if (username.value === "" || email.value === "" || comments.value === "") {
         alert ("All fields are required.");
@@ -59,13 +59,18 @@ submitButton.addEventListener('click', (e) => {
 });
 
 // Added bubbling and delegation for streamlined character counting
-document.querySelector("div").addEventListener('input', (e) => {
+document.querySelector("main").addEventListener("input", (e) => {
     if(e.target.id === "username") {
         userCharacters.textContent = e.target.value.length
     } else if (e.target.id === "email") {
         emailCharacters.textContent = e.target.value.length
     } else if (e.target.id === "comments") {
         commentCharacters.textContent = e.target.value.length
-    }
+    };
+    e.stopPropagation();
+});
+
+//Added to prevent background clicks with stopPropagation()
+document.addEventListener("click", (e) => {
     e.stopPropagation();
 });
