@@ -7,26 +7,30 @@
     <title>B&L</title>
 </head>
 <body>
+    <!-- Added basic html layout for propper DOM modifications -->
     <header>
         <h1>B&L Signup for comments and concerns</h1>
     </header>
-
-    <script type="module" src="cp_1.js"></script>
     <main>
+    <!-- created a div for easy css manipulation -->
         <div>
             <p>Username:</p>
-            <input type="text" id="Username" placeholder="Input Username">
+            <input type="text" id="username" placeholder="Input Username">
+            <div>Characters: <span id="usernameCount">0</span></div>
         </div>
         <div>
             <p>Email:</p>
-            <input type="text" id="Email" placeholder="Input Email">
+            <input type="text" id="email" placeholder="Input Email">
+            <div>Characters: <span id="emailCount">0</span></div>
         </div>
         <div>
             <textarea id="comments" placeholder="comments"></textarea>
+            <div>Characters: <span id="commentCount">0</span></div>
         </div>
         <div>
             <button type="button" id="submit">submit</button>
         </div>
     </main>
+    <script src="cp_1.js"></script>
 </body>
 </html>

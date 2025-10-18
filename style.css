@@ -73,8 +73,11 @@ div {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: x-large;
     color: #ffffff;
-    margin-top: 25px;
     margin-bottom: 50px;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
 
