@@ -81,3 +81,11 @@ div {
   display: inline-block;
 }
 
+#feedbackDisplay div {
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 15px auto;
+  border-radius: 10px;
+  max-width: 750px;
+  color: #000;
+}

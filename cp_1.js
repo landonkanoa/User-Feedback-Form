@@ -8,8 +8,8 @@ const emailCharacters = document.getElementById("emailCount");
 const commentCharacters = document.getElementById("commentCount");
 const feedbackDisplay = document.getElementById("feedbackDisplay");
 
-// Added event listeners with 'input' to actively change character count on website.
-username.addEventListener('input', () => {
+// Added event listeners with 'input' to actively change character count on website. No longer in use because of bubbling and delegation.
+/* username.addEventListener('input', () => {
     userCharacters.textContent = username.value.length
 });
 
@@ -19,7 +19,7 @@ email.addEventListener('input', () => {
 
 comments.addEventListener('input', () => {
     commentCharacters.textContent = comments.value.length
-});
+}); */
 
 // Added Tooltips when user hovers textbox
 username.addEventListener('mouseover', () => {
@@ -56,4 +56,16 @@ submitButton.addEventListener('click', (e) => {
     const entry = document.createElement("div");
     entry.textContent = `Username: ${username.value} Email: ${email.value} Comments: ${comments.value}`;
     feedbackDisplay.appendChild(entry);
+});
+
+// Added bubbling and delegation for streamlined character counting
+document.querySelector("div").addEventListener('input', (e) => {
+    if(e.target.id === "username") {
+        userCharacters.textContent = e.target.value.length
+    } else if (e.target.id === "email") {
+        emailCharacters.textContent = e.target.value.length
+    } else if (e.target.id === "comments") {
+        commentCharacters.textContent = e.target.value.length
+    }
+    e.stopPropagation();
 });
