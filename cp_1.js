@@ -1,4 +1,4 @@
-// Added proper items for DOM manipulation
+// Added proper items for DOM manipulation.
 const username = document.getElementById("username");
 const email = document.getElementById("email");
 const comments = document.getElementById("comments");
@@ -6,8 +6,9 @@ const submitButton = document.getElementById("submit");
 const userCharacters = document.getElementById("usernameCount");
 const emailCharacters = document.getElementById("emailCount");
 const commentCharacters = document.getElementById("commentCount");
+const feedbackDisplay = document.getElementById("feedbackDisplay");
 
-// Added event listeners with 'input' to actively change character count on website
+// Added event listeners with 'input' to actively change character count on website.
 username.addEventListener('input', () => {
     userCharacters.textContent = username.value.length
 });
@@ -43,4 +44,16 @@ comments.addEventListener('mouseover', () => {
 
 comments.addEventListener('mouseout', () => {
     comments.title = ""
+});
+
+// Added it so users could not submit without all fields and text value was appended onto the page.
+submitButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (username.value === "" || email.value === "" || comments.value === "") {
+        alert ("All fields are required.");
+        return;
+    }
+    const entry = document.createElement("div");
+    entry.textContent = `Username: ${username.value} Email: ${email.value} Comments: ${comments.value}`;
+    feedbackDisplay.appendChild(entry);
 });
